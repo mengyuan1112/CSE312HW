@@ -1,0 +1,62 @@
+in the file "./src/HelloWorld" is the class to make the TCP server
+
+
+HW1
+I am use ServerSocket library to create socket server at port 8000
+Then I just keep listening the Request from port 8000
+Use i/o library to convert input stream to Java string.
+for each time the url send a request, l will read the request to determine what kind of request is it and what path is it from
+if it is from "/hello" path, l will make response to 200 OK and hello world back to client browser.
+if it is from "/hi" path, l will make redirection to hello path and show hello world in the browser.
+if anything else l will gives 404 not found to browser
+after I define the specific GET request, I use get "socket.getOutputStream().write(res.getBytes("UTF-8"));" to send data back to client
+
+
+HW2
+I am keep using the structure from the HW1
+Then I was still listening from the port that gives to me request
+when l receiving request, I am trying to split request path to what l need by helping function
+and then l was based on specific request to send back specific response
+for the PNG type, I was using content-type text/png and send body as png file length is png file's length
+for the HTML type, I was using content-type text/html and send body as html file length is html file's length
+for the PNG CSS, I was using content-type text/css and send body as css file length is css file's length
+for the decode Chinese letter I was adding UTF-8 in the content type header
+
+in the generate html file I was using for loop to generate multiple png in the html.
+
+after everything is parse formally it will execute perfectly.
+
+HW3
+I am keep using the structure from the HW1 and HW2
+Then due to the successful to receive GET request, I will try to get Post Request.
+In the HTML file, I will make form about file upload and comment.
+Then I will send Post request to my TCP server.
+I use Bytebuffer to read the byte from the Post request.
+I will get content length and boundary by split function
+then I will process my body based on the content length size
+after read entire body, I will use my token function that split array in specific delimiter.
+due to the parsing body, I am able to get anything what I want in the byte form.
+then in the file case, I just write all the byte file into a file make to jpg.
+in the name case I just need to convert to String use UTF-8.
+make Map to store the write file name and caption.
+then I will redirect to the home page and home page will be generate by temp html.
+it will repeat step that I did.
+
+
+HW4
+I use the similar way to get header from the websocket and parse it take out what I need like"websocket key"
+then I use key+GUID and SHA1 then hash them to be the websocket accept, make the response 101 websocket
+After handshake successful I start a while loop to keep it connecting, and use input stream to read frame
+In the frame I took out the opcode in the first byte, and second byte take 1st bit as mask and rest of 7 bits will be length
+then next two byte will be the masking key, I parse it and XOR with rest of payload data with payload length;
+if payload length show up is 126 then next two byte will be the actual length, after take actual length i will do the same thing
+as before, during the time I always check html attack. and then I put frame into my db next time when connect a new tab it will send frame
+to the socket. everytime I send the frame it suppose to send all the thread with websocket.
+
+
+HW5
+I use the same form as HW3 in Login/Register operator, and also I create 3 DB for this hw, Login, Register, Cookies
+During the Register I take password check the special characters are{~,!,@,#,$,%,^,&,*,(,),_,.}, after successful register
+I will store Salt bytearray and password hashed by Salt, username
+In the login I will take out salt array and salt user input password then compare those is same or not. login successful
+I will also store current cookies with this user in order to check the welcome back message for him.

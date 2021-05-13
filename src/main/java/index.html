@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> This is Yuan's Page from CSE312</title>
+    <h1> This is Yuan's Page from CSE 312 Class</h1>
+    <button onclick="useless()" type="button">Don't Click Me! I am Useless! Waste your time</button>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+</head>
+<body onload= hello();>
+<p id = "useless"></p>
+
+<img src="/image/flamingo">
+
+<form action="/register" id="register-form" method="post" enctype="multipart/form-data">
+    <label for="text-form-userName">Register UserName: </label>
+    <input id="text-form-userName" type="text" name="username"><br/>
+    <label for="form-password">Register Password: </label>
+    <input id="form-password" type="text" name="password">
+    <input type="submit" value="Register">
+</form>
+
+<form action="/login" id="login-form" method="post" enctype="multipart/form-data">
+    <label for="text-form-loginUser">Login UserName: </label>
+    <input id="text-form-loginUser" type="text" name="username"><br/>
+    <label for="form-loginPassword">Login Password: </label>
+    <input id="form-loginPassword" type="text" name="password">
+    <input type="submit" value="Login">
+</form>
+
+
+
+<form action="/comment" id="comment-form" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="csrf-token" value="CIwNZNlR4XbisJF39I8yWnWX9wX4WFoz" />
+    <label for="text-form-name">Name: </label>
+    <input id="text-form-name" type="text" name="name"><br/>
+    <label for="form-comment">Comment: </label>
+    <input id="form-comment" type="text" name="comment">
+    <input type="submit" value="Submit">
+</form>
+
+<p>below will be file upload</p>
+
+<form action="/image-upload" id="image-form" method="post" enctype="multipart/form-data">
+    <label for="form-file">Image: </label>
+    <input id="form-file" type="file" name="upload">
+    <br/>
+    <label for="image-form-name">Caption: </label>
+    <input id="image-form-name" type="text" name="name">
+    <input type="submit" value="Submit">
+</form>
+
+<label for="chat-name">Name: </label>
+<input id="chat-name" type="text" name="name">
+<br/>
+<label for="chat-comment">Comment: </label>
+<input id="chat-comment" type="text" name="comment">
+
+<button onclick="sendMessage()">Chat</button>
+
+<div id="chat"></div>
+
+
+
+
+<script src="function.js"></script>
+
+
+</body>
+</html>
